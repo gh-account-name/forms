@@ -1,0 +1,204 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+:root {
+    --color1: black;
+    --color2: white;
+}
+
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 100px;
+}
+
+.form{
+    width: 40%;
+    padding: 20px;
+    box-shadow: 5px 5px 0 0 var(--color1);
+    border: 2px solid var(--color1);
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: var(--color1);
+    background-color: var(--color2);
+}
+
+form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form__text{
+    font-size: 2em;
+    margin-bottom: 30px;
+}
+
+.form__row{
+    width: 50%;
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.form input{
+    border: none;
+    border-bottom: 2px solid var(--color1);
+    outline: none;
+    font-family:inherit;
+    font-size: inherit;
+    padding-left: 0.3em;
+    width: 100%;
+    transition: .3s;
+    background-color: transparent;
+    padding-bottom: 0.1em;
+}
+
+.form input:focus + label, input:not(.input_empty):not([type='checkbox'])+label{
+    transition: .3s;
+    transform: translateY(-1.2em);
+}
+
+.form label{
+    position: absolute;
+    transition: .3s;
+    z-index: 2;
+    left: 0.3em;
+    top: -0.1em;
+    cursor: pointer;
+}
+
+.form__button {
+    border: none;
+    width: 50%;
+    height: 40px;
+    font-family: inherit;
+    font-size: inherit;
+    background-color: var(--color2);
+    box-shadow: 3px 3px 0 0 var(--color1); 
+    border: 2px solid var(--color1);
+    cursor: pointer;
+    opacity: 0.5;
+    transition: .3s;
+}
+
+.form .form__button_active {
+    opacity: 1;
+}
+
+.form .form__button_active:hover{
+    transform: translate(3px, 3px);
+    box-shadow: none;
+    transition: .3s;
+}
+
+.form__link{
+    font-size: 0.7em;
+    margin-top: 20px;
+    color: var(--color1);
+    text-decoration: none;
+}
+
+.form__link:hover{
+    text-decoration: underline;
+}
+
+/* Чекбокс - начало */
+
+.form__agreement:focus + label, .form__agreement:valid + label{
+    transition: none !important;
+    transform: none !important;
+}
+
+.form__agreement-label{
+    position: relative !important;
+}
+
+.form__agreement{
+    margin: 0 !important;
+    width: 30px !important;
+    cursor: pointer;
+}
+
+.form__row:last-of-type{
+    display: flex;
+}
+
+/* для элемента input c type="checkbox" */
+.form__agreement {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+  }
+
+  /* для элемента label, связанного с .form__agreement */
+  .form__agreement+label {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+  }
+
+  /* создание в label псевдоэлемента before со следующими стилями */
+  .form__agreement+label::before {
+    content: '';
+    display: flex;
+    width: 1em;
+    height: 1em;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 2px solid var(--color1);
+    margin-right: 0.5em;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 80% 80%;
+    cursor: pointer;
+    transition: .3s;
+    color: var(--color1);
+  }
+
+  /* стили для чекбокса, находящегося в состоянии checked */
+  .form__agreement:checked+label::before {
+    background-color: var(--color1);
+    transition: .3s;
+    /* content: "\25A0"; */
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+  }
+
+  /* стили для чекбокса, находящегося в состоянии disabled */
+  .form__agreement:disabled+label::before {
+    background-color: var(--color2);
+  }
+
+/* Чекбокс - конец */
+
+@media (max-width: 768px) {
+    .form {
+        width: 60%;
+    }
+}
+
+@media (max-width: 480px) {
+    .form {
+        width: 90%;
+    }
+    
+    .form__row{
+        width: 70%;
+    }
+    
+    .form__button{
+        width: 70%;
+        height: 50px;
+    }
+}

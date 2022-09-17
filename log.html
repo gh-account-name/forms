@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>login form</title>
+</head>
+<body>
+    <div class="container">
+        <div class="form">
+            <form action="#">
+                <p class="form__text">Вход</p>
+                <div class="form__row">
+                    <input required type="text" class="form__login" name="login" id="login" pattern="[A-Za-z]+" maxlength="20">
+                    <label class="form__login-label" for="login">Логин</label>
+                </div>
+                <div class="form__row">
+                    <input required type="password" class="form__password" name="password" id="password" minlength="8">
+                    <label class="form__password-label" for="password">Пароль</label>
+                </div>
+                <button class="form__button form__button_active" type="submit">Войти</button>
+                <a class="form__link" href="/reg.html">Регистрация</a>
+            </form>
+        </div>
+    </div>
+</body>
+<script src="./script.js"></script>
+</html>
